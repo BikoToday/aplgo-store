@@ -1,0 +1,156 @@
+/* 
+  Dynamic Wellness Background 
+  Three-layer system: Gradient (Base), Noise (Texture), Motion (Particles)
+*/
+
+:root {
+    /* Earthy Palette Keys */
+    --bg-sage: #e0e5df;
+    --bg-olive: #d5d9d1;
+    --bg-sand: #e8e4dc;
+    --bg-clay: #e6e2de;
+    --bg-white: #f7f6f4;
+}
+
+/* Container for the entire background system */
+.bg-fixed-container {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: var(--bg-white);
+}
+
+/* Layer 1: Base Gradient - Slow shifting */
+.bg-gradient-layer {
+    position: absolute;
+    inset: -50%;
+    /* Oversized for smooth movement */
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%,
+            var(--bg-white) 0%,
+            var(--bg-sage) 25%,
+            var(--bg-sand) 50%,
+            var(--bg-olive) 75%);
+    filter: blur(60px);
+    opacity: 0.8;
+    animation: bg-breathe 24s ease-in-out infinite alternate;
+}
+
+/* Layer 2: Noise Texture - Subtle film grain */
+.bg-noise-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3 viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+/* Layer 3: Motion - Particles Container */
+.bg-particles-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+/* Particle Styles */
+.particle-pollen {
+    position: absolute;
+    background-color: #6b705c;
+    /* Deep earthy green/brown */
+    border-radius: 50%;
+    opacity: 0.15;
+    filter: blur(0.5px);
+    will-change: transform, opacity;
+}
+
+.particle-blob {
+    position: absolute;
+    background: radial-gradient(circle, var(--bg-sage), transparent 70%);
+    border-radius: 50%;
+    opacity: 0.08;
+    filter: blur(40px);
+    will-change: transform;
+}
+
+/* Animations */
+@keyframes bg-breathe {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-2%, -2%) scale(1.05);
+    }
+
+    100% {
+        transform: translate(1%, 1%) scale(1);
+    }
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(110vh) translateX(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: var(--target-opacity);
+    }
+
+    80% {
+        opacity: var(--target-opacity);
+    }
+
+    100% {
+        transform: translateY(-10vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+@keyframes drift-lateral {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    33% {
+        transform: translateX(30px) translateY(-20px);
+    }
+
+    66% {
+        transform: translateX(-20px) translateY(10px);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+/* Utility to apply random duration/delay via inline styles, 
+   but we define the base animation here */
+.animate-float {
+    animation-name: float-up;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.animate-drift {
+    animation-name: drift-lateral;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .bg-gradient-layer,
+    .particle-pollen,
+    .particle-blob,
+    .animate-float,
+    .animate-drift {
+        animation: none !important;
+        transition: none !important;
+    }
+}

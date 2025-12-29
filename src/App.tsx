@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { CartProvider } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { CartDrawer } from './components/CartDrawer';
+import { Background } from './components/Background';
 import { StorePage } from './pages/StorePage';
 
 // Scroll to top on route change
@@ -19,6 +20,7 @@ export default function App() {
         <Router>
             <CartProvider>
                 <div className="min-h-screen flex flex-col">
+                    <Background />
                     <ScrollToTop />
                     <Navbar />
                     <CartDrawer />
