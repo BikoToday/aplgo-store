@@ -20,7 +20,7 @@ export const Navbar = () => {
                 >
                     {/* Logo */}
                     <a href="https://aplgo.co.za/" className="flex items-center gap-2">
-                        <img src="/aplgo_logo.svg" alt="APLGO Logo" className="h-8 w-auto" />
+                        <img src="/aplgo_logo.png" alt="APLGO Logo" className="h-8 w-auto" />
                     </a>
 
                     {/* Nav Links - Desktop */}
