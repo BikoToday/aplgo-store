@@ -19,15 +19,16 @@ export const Navbar = () => {
                     className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between rounded-full"
                 >
                     {/* Logo */}
-                    <Link to="/" className="text-xl font-serif font-semibold tracking-tight text-stone-900">
-                        APLGO <span className="font-sans text-xs font-normal text-stone-500 ml-1">with Gugu</span>
-                    </Link>
+                    <a href="https://aplgo.co.za/" className="flex items-center gap-2">
+                        <img src="/aplgo_logo.svg" alt="APLGO Logo" className="h-8 w-auto" />
+                    </a>
 
                     {/* Nav Links - Desktop */}
                     <nav className="hidden md:flex items-center gap-8">
-                        <Link to="/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Journal</Link>
-                        <Link to="/store" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Shop</Link>
-                        <Link to="/about" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">About</Link>
+                        <a href="https://aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Home</a>
+                        <a href="https://store.aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Store</a>
+                        <a href="https://store.aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">About Us</a>
+                        <a href="https://support.aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Support</a>
                     </nav>
 
                     {/* Cart Trigger */}

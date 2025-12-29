@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { CartProvider } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { CartDrawer } from './components/CartDrawer';
-import { HomePage } from './pages/HomePage';
 import { StorePage } from './pages/StorePage';
 
 // Scroll to top on route change
@@ -26,10 +25,9 @@ export default function App() {
 
                     <main className="flex-grow">
                         <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/store" element={<StorePage />} />
+                            <Route path="/" element={<StorePage />} />
                             {/* Fallback route */}
-                            <Route path="*" element={<HomePage />} />
+                            <Route path="*" element={<StorePage />} />
                         </Routes>
                     </main>
 
