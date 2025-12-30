@@ -27,7 +27,7 @@ export const Navbar = () => {
                     <nav className="hidden md:flex items-center gap-8">
                         <a href="https://aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Home</a>
                         <a href="https://store.aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Store</a>
-                        <a href="https://store.aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">About Us</a>
+                        <a href="https://about.aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">About Us</a>
                         <a href="https://support.aplgo.co.za/" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Support</a>
                     </nav>
 
