@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #F7CC9F;
+  --color-background-dark: #E0B58C;
+  --color-background-light: #FBE0C5;
+
+  --color-primary: #88A096;
+  --color-primary-dark: #6E857C;
+
+  --color-text: #2D3748;
+  --color-text-light: #4A5568;
+
+  --color-accent-white: #FDFBF7;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --animate-blob: blob 7s infinite;
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+}
+
+@layer base {
+  body {
+    background: linear-gradient(to bottom right, #F7CC9F, #FBE0C5, #E0B58C);
+    min-height: 100vh;
+    @apply text-text overflow-x-hidden antialiased;
+  }
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
