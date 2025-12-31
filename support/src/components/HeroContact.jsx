@@ -31,6 +31,8 @@ const HeroContact = () => {
                 setStatus('success');
                 setFormData({ requestType: 'Product question', fullName: '', phone: '', email: '', message: '' });
             } else {
+                const errorData = await res.json().catch(() => ({}));
+                console.error('Form submission failed:', res.status, errorData);
                 setStatus('error');
             }
         } catch (error) {

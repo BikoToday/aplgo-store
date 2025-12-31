@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
 export const config = {
-    runtime: 'edge', // or 'nodejs', but edge is faster for simple fetches if supported, sticking to node for compat if needed, actually standard node is safer for resend SDK sometimes
+    runtime: 'nodejs',
 };
 
 export default async function handler(req, res) {
