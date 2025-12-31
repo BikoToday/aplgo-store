@@ -15,12 +15,21 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { requestType, fullName, phone, email, message } = req.body;
+        if (!process.env.RESEND_API_KEY) {
+            console.error('Missing RESEND_API_KEY environment variable');
+            return res.status(500).json({ error: 'Server configuration error: Missing API Key' });
+        }
+
+        const { requestType, fullName, phone, email, message } = req.body || {};
+
+        if (!email || !message) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
 
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         const { data, error } = await resend.emails.send({
-            from: 'APLGO Support <onboarding@resend.dev>',
+            from: 'APLGO Support <support@success.bikotoday.co.za>',
             to: ['info@aplgo.co.za', 'mashangasegp@yahoo.com'],
             subject: `New Support Request — ${requestType}`,
             html: `
